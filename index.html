@@ -234,16 +234,17 @@
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-widest mb-2">Full Name</label>
-                        <input type="text" required
+                        <input type="text" name="name" required
                             class="w-full bg-white border-b-2 border-emerald-900/20 p-3 focus:outline-none focus:border-emerald-900 transition-all rounded-lg"
                             placeholder="Amitabh Bachchan">
                     </div>
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-widest mb-2">Are you in?</label>
-                        <select
+                        <select name="attendance"
                             class="w-full bg-white border-b-2 border-emerald-900/20 p-3 focus:outline-none focus:border-emerald-900 transition-all rounded-lg">
-                            <option>Hell yes!</option>
-                            <option>Sadly, I'm boring and can't make it</option>
+                            <option value="Hell yes!">Hell yes!</option>
+                            <option value="Sadly, I'm boring and can't make it">Sadly, I'm boring and can't make it
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -252,26 +253,29 @@
                     <div class="flex flex-wrap gap-4 mt-2">
                         <label
                             class="flex items-center gap-2 cursor-pointer bg-white px-4 py-2 rounded-full border hover:border-emerald-900">
-                            <input type="radio" name="food" class="accent-emerald-900"> <span>Everything</span>
+                            <input type="radio" name="food" value="Everything" class="accent-emerald-900" required>
+                            <span>Everything</span>
                         </label>
                         <label
                             class="flex items-center gap-2 cursor-pointer bg-white px-4 py-2 rounded-full border hover:border-emerald-900">
-                            <input type="radio" name="food" class="accent-emerald-900"> <span>Veggie Vibes</span>
+                            <input type="radio" name="food" value="Veggie Vibes" class="accent-emerald-900">
+                            <span>Veggie Vibes</span>
                         </label>
                         <label
                             class="flex items-center gap-2 cursor-pointer bg-white px-4 py-2 rounded-full border hover:border-emerald-900">
-                            <input type="radio" name="food" class="accent-emerald-900"> <span>No Gluten Pls</span>
+                            <input type="radio" name="food" value="No Gluten Pls" class="accent-emerald-900"> <span>No
+                                Gluten Pls</span>
                         </label>
                     </div>
                 </div>
                 <div>
                     <label class="block text-xs font-bold uppercase tracking-widest mb-2">Song request (to keep the
                         floor moving)</label>
-                    <input type="text"
+                    <input type="text" name="song"
                         class="w-full bg-white border-b-2 border-emerald-900/20 p-3 focus:outline-none focus:border-emerald-900 transition-all rounded-lg"
                         placeholder="The banger of your choice">
                 </div>
-                <button type="submit"
+                <button id="submitBtn" type="submit"
                     class="w-full bg-emerald-900 text-white py-4 rounded-full font-bold text-lg hover:scale-[1.02] transition-transform shadow-lg">Submit
                     RSVP</button>
             </form>
@@ -287,10 +291,14 @@
         <p class="text-lg opacity-80 leading-relaxed italic-serif">
             Honestly? Just having you there means everything to us. Bring your smiles, your duas, and your good energy.
         </p>
-        <button
-            class="mt-8 border-2 border-emerald-900 px-10 py-3 rounded-full font-bold hover:bg-emerald-900 hover:text-white transition-all">Registry
-            Details</button>
     </section>
+
+    <!-- Music Player -->
+    <audio id="bg-music" loop>
+        <!-- Place your beautiful hindi song file in the same folder and name it 'wedding_song.mp3' -->
+        <source src="./wedding_song.mpeg" type="audio/mpeg">
+    </audio>
+
 
     <!-- Footer -->
     <footer class="py-12 bg-emerald-900 text-white text-center">
@@ -323,11 +331,54 @@
         }, 1000);
 
         // RSVP Form
-        document.getElementById('rsvpForm').addEventListener('submit', function (e) {
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbx853O8gii_C1dxTwbm1UGNQeqbo7FElKDbKwP1yi471UJSMeepoZj9jEEsIeQd_RqS7g/exec';
+        const form = document.getElementById('rsvpForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
-            this.style.display = 'none';
-            document.getElementById('successMsg').classList.remove('hidden');
+
+            if (scriptURL === 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE' || scriptURL.includes('docs.google.com/spreadsheets')) {
+                alert("❌ ERROR: You put the Google Sheet link instead of the Web App link.\n\nYou must go to Extensions > Apps Script in your Sheet, deploy the script as a Web App, and paste the link that starts with 'https://script.google.com/...' into the code.");
+                return;
+            }
+
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = "Sending...";
+            submitBtn.disabled = true;
+
+            fetch(scriptURL, {
+                method: 'POST',
+                body: new URLSearchParams(new FormData(form))
+            })
+                .then(response => {
+                    form.style.display = 'none';
+                    document.getElementById('successMsg').classList.remove('hidden');
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert("Something went wrong. Please try again.");
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                });
         });
+
+        // Music Player (Auto-play on first interaction, low volume)
+        const bgMusic = document.getElementById('bg-music');
+        bgMusic.volume = 0.09; // Set very low volume (5%)
+        let hasStartedPlaying = false;
+
+        function startMusic() {
+            if (!hasStartedPlaying) {
+                bgMusic.play().catch(e => console.log("Audio play failed:", e));
+                hasStartedPlaying = true;
+            }
+        }
+
+        // Browsers require user interaction before playing audio
+        document.body.addEventListener('click', startMusic);
+        document.body.addEventListener('touchstart', startMusic);
+        document.body.addEventListener('scroll', startMusic, { once: true });
     </script>
 </body>
 
