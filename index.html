@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Best Day Ever | Wedding Invite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2d4a3e;
+            /* Deep Forest */
+            --accent: #d4af37;
+            /* Gold */
+            --bg: #f9f7f2;
+            /* Off White */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: var(--primary);
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .italic-serif {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('./sahib_illu.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Floating Animations */
+        .floating {
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        .floating-slow {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        .floating-fast {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        .map-container {
+            filter: grayscale(100%) invert(90%) contrast(90%);
+            transition: all 0.5s ease;
+        }
+
+        .map-container:hover {
+            filter: grayscale(0%) invert(0%) contrast(100%);
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+    <!-- Hero Section -->
+    <section
+        class="relative h-screen w-full flex items-center justify-center text-center text-white hero-gradient px-4">
+        <!-- Floating Decor -->
+        <!-- <div class="absolute top-20 left-10 text-4xl opacity-30 floating">✨</div>
+        <div class="absolute bottom-20 right-10 text-4xl opacity-30 floating-slow">🥂</div> -->
+
+        <div class="z-10 max-w-4xl">
+            <p class="uppercase tracking-[0.3em] mb-4 text-sm md:text-base animate-pulse">Wait, it's actually happening
+            </p>
+            <h1 class="text-6xl md:text-9xl mb-6 font-bold leading-tight floating">Sahil & Hiba</h1>
+            <p class="italic-serif text-2xl md:text-4xl mb-8">The start of our greatest adventure.</p>
+            <div class="flex justify-center gap-4 text-lg">
+                <a href="#rsvp"
+                    class="bg-white text-emerald-900 px-8 py-3 rounded-full font-semibold hover:bg-emerald-100 transition-all shadow-lg">Count
+                    Me In</a>
+                <a href="#details"
+                    class="border border-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-all">Our
+                    Day</a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
+                </path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Countdown -->
+    <section class="py-12 bg-emerald-900 text-white text-center">
+        <div id="countdown" class="flex justify-center gap-6 md:gap-12">
+            <div><span id="days" class="text-4xl md:text-6xl font-bold">00</span>
+                <p class="text-xs uppercase mt-2">Days</p>
+            </div>
+            <div><span id="hours" class="text-4xl md:text-6xl font-bold">00</span>
+                <p class="text-xs uppercase mt-2">Hours</p>
+            </div>
+            <div><span id="minutes" class="text-4xl md:text-6xl font-bold">00</span>
+                <p class="text-xs uppercase mt-2">Mins</p>
+            </div>
+            <div><span id="seconds" class="text-4xl md:text-6xl font-bold">00</span>
+                <p class="text-xs uppercase mt-2">Secs</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="py-24 px-6 max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div class="relative floating-slow">
+            <img src="./sahib%20celebration.png" class="rounded-2xl shadow-2xl z-10 relative" alt="Couple">
+            <div class="absolute -bottom-6 -right-6 w-full h-full border-2 border-emerald-900 rounded-2xl -z-0"></div>
+        </div>
+        <div>
+            <h2 class="text-5xl mb-6 font-bold">The Vibe Check</h2>
+            <p class="text-lg leading-relaxed mb-6 opacity-80">
+                After years of laughter, prayers, shared dreams, and unforgettable memories, we’re beginning our next
+                chapter together. With the love of our families, we invite you to celebrate a day filled with joy,
+                togetherness, and love.
+            </p>
+            <p class="italic-serif text-2xl text-emerald-800">Good food, great company, and memories to last a lifetime.
+                Let's make it a night to remember!</p>
+        </div>
+    </section>
+
+    <!-- Timeline/Events -->
+    <section id="details" class="py-24 bg-white px-6">
+        <div class="max-w-4xl mx-auto text-center mb-16">
+            <h2 class="text-5xl font-bold mb-4">Our Special Day</h2>
+            <p class="uppercase tracking-widest text-emerald-600">June 21, 2026</p>
+        </div>
+        <div class="max-w-4xl mx-auto grid gap-8">
+            <!-- Event 1 -->
+            <div
+                class="glass-card p-8 rounded-3xl flex flex-col md:flex-row gap-8 items-center border-l-4 border-l-emerald-900 hover:scale-[1.01] transition-transform">
+                <div class="text-center md:text-left">
+                    <span class="text-emerald-600 font-bold uppercase tracking-widest text-sm">11:00 AM</span>
+                    <h3 class="text-3xl font-bold mt-1">Nikah Ceremony</h3>
+                    <p class="mt-2 opacity-75">Join us as we begin our sacred union and celebrate the start of our life
+                        together.</p>
+                </div>
+            </div>
+            <!-- Event 2 -->
+            <div
+                class="glass-card p-8 rounded-3xl flex flex-col md:flex-row gap-8 items-center border-l-4 border-l-emerald-900 hover:scale-[1.01] transition-transform">
+                <div class="text-center md:text-left">
+                    <span class="text-emerald-600 font-bold uppercase tracking-widest text-sm">5:00 PM</span>
+                    <h3 class="text-3xl font-bold mt-1">Reception</h3>
+                    <p class="mt-2 opacity-75">Dinner, drinks, and bad dancing to celebrate the night away.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="py-24 px-6 bg-white overflow-hidden">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2">
+                <h2 class="text-5xl font-bold mb-6">Where to Find Us</h2>
+                <p class="text-xl italic-serif text-emerald-800 mb-4">“Where the magic happens.”</p>
+                <p class="text-lg opacity-75 mb-8">
+                    We have two lovely locations for our special day. Use the links below to find your way to the
+                    ceremony and reception.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-emerald-100 p-3 rounded-full text-emerald-900 floating-fast">📍</div>
+                        <div>
+                            <p class="font-bold">Wedding Ceremony</p>
+                            <a href="https://maps.app.goo.gl/rAAcF8hXUpeNJpsPA" target="_blank"
+                                class="text-sm opacity-60 underline hover:text-emerald-900">Open in Maps</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="bg-emerald-100 p-3 rounded-full text-emerald-900 floating-slow">🥂</div>
+                        <div>
+                            <p class="font-bold">Reception</p>
+                            <a href="https://maps.app.goo.gl/95ATWL89iEnEBToW9" target="_blank"
+                                class="text-sm opacity-60 underline hover:text-emerald-900">Open in Maps</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 h-[400px] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-emerald-50">
+                <img src="./location.png" class="w-full h-full object-cover" alt="Location Map">
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="py-24 px-6 bg-emerald-50 relative">
+        <!-- More Floating Elements -->
+        <div class="absolute top-10 right-20 text-5xl opacity-10 floating-slow">💌</div>
+        <div class="absolute bottom-10 left-20 text-5xl opacity-10 floating">✨</div>
+
+        <div class="max-w-3xl mx-auto glass-card p-10 md:p-16 rounded-[3rem] shadow-xl text-center">
+            <h2 class="text-5xl font-bold mb-4">Are you coming?</h2>
+            <p class="mb-10 opacity-70 italic-serif text-xl">Let us know by june 10th, or we’ll give your seat to a
+                random cat.</p>
+
+            <form id="rsvpForm" class="space-y-6 text-left">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest mb-2">Full Name</label>
+                        <input type="text" required
+                            class="w-full bg-white border-b-2 border-emerald-900/20 p-3 focus:outline-none focus:border-emerald-900 transition-all rounded-lg"
+                            placeholder="Amitabh Bachchan">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest mb-2">Are you in?</label>
+                        <select
+                            class="w-full bg-white border-b-2 border-emerald-900/20 p-3 focus:outline-none focus:border-emerald-900 transition-all rounded-lg">
+                            <option>Hell yes!</option>
+                            <option>Sadly, I'm boring and can't make it</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest mb-2">What are you eating?</label>
+                    <div class="flex flex-wrap gap-4 mt-2">
+                        <label
+                            class="flex items-center gap-2 cursor-pointer bg-white px-4 py-2 rounded-full border hover:border-emerald-900">
+                            <input type="radio" name="food" class="accent-emerald-900"> <span>Everything</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-2 cursor-pointer bg-white px-4 py-2 rounded-full border hover:border-emerald-900">
+                            <input type="radio" name="food" class="accent-emerald-900"> <span>Veggie Vibes</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-2 cursor-pointer bg-white px-4 py-2 rounded-full border hover:border-emerald-900">
+                            <input type="radio" name="food" class="accent-emerald-900"> <span>No Gluten Pls</span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest mb-2">Song request (to keep the
+                        floor moving)</label>
+                    <input type="text"
+                        class="w-full bg-white border-b-2 border-emerald-900/20 p-3 focus:outline-none focus:border-emerald-900 transition-all rounded-lg"
+                        placeholder="The banger of your choice">
+                </div>
+                <button type="submit"
+                    class="w-full bg-emerald-900 text-white py-4 rounded-full font-bold text-lg hover:scale-[1.02] transition-transform shadow-lg">Submit
+                    RSVP</button>
+            </form>
+            <div id="successMsg" class="hidden mt-6 p-4 bg-emerald-100 text-emerald-900 rounded-xl font-semibold">
+                Boom! You're on the list. See you there! 🥂
+            </div>
+        </div>
+    </section>
+
+    <!-- Gift Section -->
+    <section class="py-24 px-6 text-center max-w-2xl mx-auto">
+        <h2 class="text-4xl font-bold mb-6">The "Gift" Situation</h2>
+        <p class="text-lg opacity-80 leading-relaxed italic-serif">
+            Honestly? Just having you there means everything to us. Bring your smiles, your duas, and your good energy.
+        </p>
+        <button
+            class="mt-8 border-2 border-emerald-900 px-10 py-3 rounded-full font-bold hover:bg-emerald-900 hover:text-white transition-all">Registry
+            Details</button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-emerald-900 text-white text-center">
+        <p class="serif text-3xl font-bold mb-2">S & H</p>
+        <p class="opacity-50 text-sm">#SahilAndHiba2026</p>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        const weddingDate = new Date("Jun 21, 2026 10:00:00").getTime();
+
+        const x = setInterval(function () {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "IT'S PARTY TIME!";
+            }
+        }, 1000);
+
+        // RSVP Form
+        document.getElementById('rsvpForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            this.style.display = 'none';
+            document.getElementById('successMsg').classList.remove('hidden');
+        });
+    </script>
+</body>
+
+</html>
